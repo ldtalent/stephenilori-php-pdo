@@ -1,0 +1,27 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+  overflow-y: hidden !important;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  list-style: none;
+}
+
+.mt-10 {
+  margin-top: 15%;
+}
+
+.mt-5 {
+  margin-top: 10% !important;
+}
