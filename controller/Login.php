@@ -12,7 +12,7 @@ class Login extends Controller {
     $this->loginModel = new LoginModel();
   }
 
-  public function login(array $data) :array
+  public function login(array $data)
   {
     $email = stripcslashes(strip_tags($data['email']));
     $password = stripcslashes(strip_tags($data['password']));

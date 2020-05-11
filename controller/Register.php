@@ -9,14 +9,14 @@
       $this->registerModel = new RegisterModel();
     }
 
-    public function register(array $data) :array
+    public function register(array $data)
     {
       $name = stripcslashes(strip_tags($data['name']));
       $email = stripcslashes(strip_tags($data['email']));
       $phone = stripcslashes(strip_tags($data['phone']));
       $password = stripcslashes(strip_tags($data['password']));
 
-      $EmailRecords = $this->registerModel->fetchEmail($email);
+      $Email = $this->registerModel->fetchUser($email);
 
       $Error = array(
         'name' => '',
@@ -26,12 +26,12 @@
         'status' => false
       );
 
-      if (preg_match('/[^A-Za-z_]/', $name)) {
+      if (preg_match('/[^A-Za-z]/', $name)) {
         $Error['name'] = 'Only Alphabets are allowed.';
         return $Error;
       }
 
-      if (!$EmailRecords['status']) {
+      if (!empty($Email)) {
         $Error['email'] = 'Sorry. This Email Address has been taken.';
         return $Error;
       }
@@ -64,7 +64,7 @@
         return $Response;
       }
 
-      $_SESSION['data'] = $this->registerModel->fetchUser($email);
+      $_SESSION['data'] = $Email;
       $_SESSION['auth_status'] = true;
       header("Location: dashboard.php");
       return true;

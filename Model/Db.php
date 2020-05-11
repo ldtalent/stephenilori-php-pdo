@@ -1,9 +1,9 @@
 <?php
   class Db {
-    protected $dbName = 'learning_dollars_db';
-    protected $dbHost = 'localhost';
-    protected $dbUser = 'root';
-    protected $dbPass = '';
+    protected $dbName = 'learning_dollars_db'; /** Database Name */
+    protected $dbHost = 'localhost'; /** Database Host */
+    protected $dbUser = 'root'; /** Database Root */
+    protected $dbPass = ''; /** Databse Password */
     protected $dbHandler, $dbStmt;
 
     public function __construct()

@@ -1,5 +1,3 @@
-<?php require_once('./controller/Login.php');  ?>
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
