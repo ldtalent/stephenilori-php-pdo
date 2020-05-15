@@ -1,6 +1,12 @@
 <?php
   require_once(__dir__ . '/Db.php');
   class LoginModel extends Db {
+
+    /**
+      * @param string
+      * @return array
+      * @desc Returns a user record based on the method parameter....
+    **/
     public function fetchEmail(string $email) :array
     {
       $this->query("SELECT * FROM `db_user` WHERE `email` = :email");

@@ -6,6 +6,11 @@
     protected $dbPass = ''; /** Databse Password */
     protected $dbHandler, $dbStmt;
 
+    /**
+      * @param null|void
+      * @return null|void
+      * @desc Creates or resume an existing database connection...
+    **/
     public function __construct()
     {
       // Create a DSN Resource...
@@ -22,11 +27,23 @@
       }
     }
 
+
+    /**
+      * @param string
+      * @return null|void
+      * @desc Creates a PDO statement object
+    **/
     public function query($query)
     {
       $this->dbStmt = $this->dbHandler->prepare($query);
     }
 
+
+    /**
+      * @param string|integer|
+      * @return null|void
+      * @desc Matches the correct datatype to the PDO Statement Object.
+    **/
     public function bind($param, $value, $type = null)
     {
       if (is_null($type)) {
@@ -49,17 +66,34 @@
       $this->dbStmt->bindValue($param, $value, $type);
     }
 
+
+    /**
+      * @param null|void
+      * @return null|void
+      * @desc Executes a PDO Statement Object or a db query...
+    **/
     public function execute()
     {
       $this->dbStmt->execute();
+      return true;
     }
 
+    /**
+      * @param null|void
+      * @return null|void
+      * @desc Executes a PDO Statement Object an returns a single database record as an associative array...
+    **/
     public function fetch()
     {
       $this->execute();
       return $this->dbStmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    /**
+      * @param null|void
+      * @return null|void
+      * @desc Executes a PDO Statement Object an returns nultiple database record as an associative array...
+    **/
     public function fetchAll()
     {
       $this->execute();

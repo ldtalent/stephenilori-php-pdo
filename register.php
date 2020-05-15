@@ -11,6 +11,7 @@
       <div class="row justify-content-center mt-5">
         <div class="col-xs-12 col-sm-12 col-md-12 col-xl-4 col-lg-4 center-align center-block">
           <?php if (isset($Response['status']) && !$Response['status']) : ?>
+          <br>
           <div class="alert alert-danger" role="alert">
             <span><B>Oops!</B> Some errors occurred in your form.</span>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -24,7 +25,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12 col-lg-12 mt-4">
               <div class="form-group">
                 <label for="inputName" class="sr-only">Names</label>
-                <input type="text" id="inputName" class="form-control" placeholder="Enter Full Name" name="name" required autofocus>
+                <input type="text" id="inputName" class="form-control" placeholder="Enter Full Name" name="name" required autofocus value="<?php if (isset($_POST['name'])) echo $_POST['name']; ?>">
                 <?php if (isset($Response['name']) && !empty($Response['name'])): ?>
                   <small class="text-danger"><?php echo $Response['name']; ?></small>
                 <?php endif; ?>
@@ -33,7 +34,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12 col-lg-12 mt-4">
               <div class="form-group">
                 <label for="inputEmail" class="sr-only">Email</label>
-                <input type="email" id="inputEmail" class="form-control" placeholder="Enter Email Address" name="email" required autofocus>
+                <input type="email" id="inputEmail" class="form-control" placeholder="Enter Email Address" name="email" required autofocus value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>">
                 <?php if (isset($Response['email']) && !empty($Response['email'])): ?>
                   <small class="text-danger"><?php echo $Response['email']; ?></small>
                 <?php endif; ?>
@@ -42,7 +43,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-xl-12 col-lg-12 mt-4">
               <div class="form-group">
                 <label for="inputPhone" class="sr-only">Phone Number</label>
-                <input type="text" id="inputPhone" class="form-control" placeholder="Enter Phone" name="phone" required autofocus>
+                <input type="text" id="inputPhone" class="form-control" placeholder="Enter Phone" name="phone" required autofocus value="<?php if (isset($_POST['phone'])) echo $_POST['phone'] ?>">
                 <?php if (isset($Response['phone']) && !empty($Response['phone'])): ?>
                   <small class="text-danger"><?php echo $Response['phone']; ?></small>
                 <?php endif; ?>

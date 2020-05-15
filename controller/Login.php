@@ -6,12 +6,23 @@ class Login extends Controller {
 
   public $active = 'login'; //for highlighting the active link...
   private $loginModel;
-  
+
+  /**
+    * @param null|void
+    * @return null|void
+    * @desc Checks if the user session is set and creates a new instance of the LoginModel...
+  **/
   public function __construct()
   {
+    if (isset($_SESSION['auth_status'])) header("Location: dashboard.php");
     $this->loginModel = new LoginModel();
   }
 
+  /**
+    * @param array
+    * @return array|boolean
+    * @desc Verifies and redirects a user by calling the login method on the LoginModel...
+  **/
   public function login(array $data)
   {
     $email = stripcslashes(strip_tags($data['email']));

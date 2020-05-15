@@ -1,3 +1,4 @@
+<?php require_once('./config.php'); ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -6,8 +7,12 @@
     <meta name="author" content="Ilori Stephen A">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>LD Talent | <?php echo ucfirst($active); ?></title>
+    <!-- Css Styles... -->
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- Script -->
+    <script src="./assets/js/jquery.js" charset="utf-8"></script>
+    <script src="./assets/js/bootstrap.min.js" charset="utf-8"></script>
   </head>
   <body>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -20,19 +25,19 @@
           <ul class="navbar-nav ml-auto">
             <?php if (!isset($_SESSION['auth_status'])) : ?>
               <li class="nav-item">
-                <a class="nav-link <?php if (strtolower($active) === 'login') echo 'active'; ?>" href="http://localhost/Blog%20-%20Github/authenication-php%20(PDO)%20oop/index.php">Login</a>
+                <a class="nav-link <?php if (strtolower($active) === 'login') echo 'active'; ?>" href="<?php echo BASE_URL; ?>index.php">Login</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link <?php if (strtolower($active) === 'register') echo 'active'; ?>" href="http://localhost/Blog%20-%20Github/authenication-php%20(PDO)%20oop/register.php" tabindex="-1" aria-disabled="true">Register</a>
+                <a class="nav-link <?php if (strtolower($active) === 'register') echo 'active'; ?>" href="<?php echo BASE_URL; ?>register.php" tabindex="-1" aria-disabled="true">Register</a>
               </li>
             <?php elseif (isset($_SESSION['auth_status'])) : ?>
               <li class="nav-item">
-                <a href="http://localhost/Blog%20-%20Github/authenication-php%20(PDO)%20oop/dashboard.php" class="nav-link <?php if (strtolower($active) === 'dashboard') echo 'active'; ?>">Dashboard</a>
+                <a href="<?php echo BASE_URL; ?>dashboard.php" class="nav-link <?php if (strtolower($active) === 'dashboard') echo 'active'; ?>">Dashboard</a>
               </li>
             <?php endif; ?>
             <?php if (isset($_SESSION['auth_status'])) : ?>
               <li class="nav-item">
-                <a class="nav-link" href="http://localhost/Blog%20-%20Github/authenication-php%20(PDO)%20oop/logout.php">Logout</a>
+                <a class="nav-link" href="<?php echo BASE_URL; ?>logout.php">Logout</a>
               </li>
             <?php endif; ?>
           </ul>
